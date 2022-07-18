@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.Mapper.SelectMapper">
+    <!-- public List<Company> selectCompanyPageInterceptor(@Param("marketcap") int n);-->
+    <select id="selectCompanyPageInterceptor" resultType="company">
+        select * from com order by marketcap desc
+        <if test="marketcap !=null and marketcap&gt;=0">
+            limit 0,#{marketcap}
+        </if>
+    </select>
+
+</mapper>
