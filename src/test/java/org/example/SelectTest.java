@@ -2,6 +2,9 @@ package org.example;
 
 import SqlServer.Dao.Computer;
 import SqlServer.mapper.SelectSQLServerMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -32,9 +35,12 @@ public class SelectTest {
     public void testgetAll() throws IOException {
         SqlSession sqlSession=new SqlSessionUnit("mybatis-config.xml").getSqlSeesion();
         SelectSQLServerMapper mapper=sqlSession.getMapper(SelectSQLServerMapper.class);
+        PageHelper.startPage(5,6);
         List<Computer> list=mapper.getAll();
+        PageInfo pageInfo=new PageInfo<>(list,5);
         for (Computer computer:list){
             System.out.println(computer);
         }
+        System.out.println(pageInfo);
     }
 }
