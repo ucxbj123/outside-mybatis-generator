@@ -8,6 +8,7 @@
     <properties resource="jdbc.properties" />
     <typeAliases>
         <package name="org.example.Dao"/>
+        <package name="SqlServer.Dao"/>
     </typeAliases>
 <!--    <plugins>-->
 <!--        &lt;!&ndash; 分页插件&ndash;&gt;-->
@@ -28,6 +29,6 @@
     <mappers>
          <mapper resource="test/mybatis/mapper/SelectAllMapper.xml"/>
 <!--        <package name="test.mybatis.mapper"/>-->
-        <!--<package name="test.mybatis.mapper"/>-->
+        <package name="SqlServer.mapper"/>
     </mappers>
 </configuration>

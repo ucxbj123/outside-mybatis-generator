@@ -1,5 +1,7 @@
 package org.example;
 
+import SqlServer.Dao.Computer;
+import SqlServer.mapper.SelectSQLServerMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -23,6 +25,16 @@ public class SelectTest {
         List<Company> list=mapper.selectCompanyPageInterceptor(50);
         for (Company company:list){
             System.out.println(company);
+        }
+    }
+
+    @Test
+    public void testgetAll() throws IOException {
+        SqlSession sqlSession=new SqlSessionUnit("mybatis-config.xml").getSqlSeesion();
+        SelectSQLServerMapper mapper=sqlSession.getMapper(SelectSQLServerMapper.class);
+        List<Computer> list=mapper.getAll();
+        for (Computer computer:list){
+            System.out.println(computer);
         }
     }
 }
